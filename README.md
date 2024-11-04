@@ -90,4 +90,50 @@ In this deep learning framework:
 1. **Price dynamics** are approximated by combining nonlinear and linear interactions in the network function $\( f(S_{t-1}) \)$.
 2. **Heavy-tailed noise** is introduced through an alpha-stable noise term $\( \eta_t \)$, allowing the model to account for rare events.
 
+## Data
+
+For this analysis, we used daily **Gold price data** spanning from early 2020 to early 2024. This dataset captures significant price movements over a 4-year period, reflecting market volatility influenced by global events and economic changes.
+
+### Data Visualization
+
+The plots below illustrate:
+1. The **Gold price** trend over the selected timeframe, and
+2. The **log returns of Gold price**, providing a clearer view of volatility in daily price changes.
+
+![Gold Price Plot](plots/Gold_Price.png)
+![Log Returns Plot](plots/Gold_vol.png)
+
+## Training Methodology and Model
+
+To predict the Gold price while accounting for market fluctuations and extreme events, we modeled **log returns** as a **Deep Geometric Brownian Motion** process with an **alpha-stable noise term**. The goal is to estimate parameters that align the model with the observed data while capturing the heavy-tailed behavior seen in financial returns.
+
+### Variational Inference and the ELBO Loss
+
+The model training is implemented in **Pyro**, leveraging **Stochastic Variational Inference (SVI)** to optimize the **Evidence Lower Bound (ELBO)**. The ELBO serves as the loss function, where:
+
+1. **Reconstruction Term**: This measures the difference between the predicted price and the actual price $\( S_{t} \)$, based on the GBM-inspired equation.
+2. **KL Divergence Term**: This term ensures the learned distribution aligns well with prior knowledge, helping the model fit the heavy-tailed data accurately.
+
+### Training Process Visualization
+
+To illustrate how the model adapts its predictions to the data, the **training procedure** is shown as a gif animation. The animation plotspredicted price over each epoch (red curve) with a 90% confidence interval (red shaded region), while the actual price is shown in gray. This visualization demonstrates how the model refines its predictions estimate and adapts to observed price movements over time.
+
+![Training Procedure Animation](plots/predicting.gif)
+
+## Results
+
+After training, the model provides predictions for both the Gold price and its volatility. Below are the primary results and insights:
+
+1. **Gold Price Fitted Curve**: The model’s predicted price (blue curve) aligns closely with the actual observed prices (gray curve), along with a **90% confidence interval** (shaded region), effectively capturing price fluctuations and rare price events.
+2. **Stability Index**: The model’s stability parameter estimate for the alpha-stable noise term is:
+   - **Stability index**: $\( \alpha = 1.931 \pm 0.0001252 \)$
+
+The stability index, $\( \alpha \approx 1.931 \)$, indicates that the noise distribution is **heavy-tailed**, validating the model's ability to capture rare, extreme events which traditional GBM-based models struggle to account for.
+
+### Final Visualization Summary
+
+1. **Fitted Curve** with 90% CI:  
+   ![Fitted Gold Price Curve](plots/Predicted.png)
+
+
 
