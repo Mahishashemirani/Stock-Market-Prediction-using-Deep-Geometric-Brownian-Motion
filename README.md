@@ -90,5 +90,4 @@ In this deep learning framework:
 1. **Price dynamics** are approximated by combining nonlinear and linear interactions in the network function $\( f(S_{t-1}) \)$.
 2. **Heavy-tailed noise** is introduced through an alpha-stable noise term $\( \eta_t \)$, allowing the model to account for rare events.
 
-This combination of deep learning and alpha-stable modeling enables a robust and flexible approach to stock market prediction, potentially improving upon traditional GBM by capturing both **common price movements** and **extreme events** in the financial markets.
 
