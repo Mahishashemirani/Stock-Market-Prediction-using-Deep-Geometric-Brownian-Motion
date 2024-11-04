@@ -4,7 +4,7 @@ This repository explores the application of **Deep Learning** combined with **Ge
 
 ## Geometric Brownian Motion (GBM) for Stock Market Predictions
 
-**Geometric Brownian Motion** is a stochastic process widely used in modeling stock prices and financial markets. The GBM model expresses stock prices as a continuous-time stochastic process, defined by the following differential equation:
+**[Geometric Brownian Motion](https://en.wikipedia.org/wiki/Geometric_Brownian_motion)** is a stochastic process widely used in modeling stock prices and financial markets. The GBM model expresses stock prices as a continuous-time stochastic process, defined by the following differential equation:
 
 
 $dS_t = \mu S_t dt + \sigma S_t dW_t$
