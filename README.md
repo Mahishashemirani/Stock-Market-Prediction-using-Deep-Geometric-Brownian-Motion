@@ -46,7 +46,7 @@ $dS_t = \mu S_t dt + \sigma S_t dL_t^\alpha$
 
 where:
 - $\( L_t^\alpha \)$ is an **alpha-stable Lévy process** with stability parameter $\( \alpha \)$.
-- **When $\( \alpha < 2 \)$**, the distribution captures **heavier tails** than a Gaussian, allowing for a higher frequency of extreme changes.
+- **When $\( \alpha \leq 2 \)$**, the distribution captures **heavier tails** than a Gaussian, allowing for a higher frequency of extreme changes.
 
 This modified model introduces **flexibility in the noise component** of the price dynamics, enabling it to better reflect **non-Gaussian behaviors** observed in markets, such as **fat tails** and **volatility clustering**. These features are essential for realistic stock market prediction, as they account for the **higher-than-expected probability of large price swings** that occur in real financial markets.
 
