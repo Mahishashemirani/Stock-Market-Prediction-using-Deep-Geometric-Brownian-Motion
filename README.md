@@ -51,3 +51,44 @@ where:
 This modified model introduces **flexibility in the noise component** of the price dynamics, enabling it to better reflect **non-Gaussian behaviors** observed in markets, such as **fat tails** and **volatility clustering**. These features are essential for realistic stock market prediction, as they account for the **higher-than-expected probability of large price swings** that occur in real financial markets.
 
 ---
+## Deep Learning Extension of Geometric Brownian Motion (GBM)
+
+To enhance the flexibility of the **Geometric Brownian Motion model**, this project introduces a **neural network-based approach** to approximate stock price dynamics. Inspired by the analytical solution of the GBM, the stock price $\( S_t \)$ is given by:
+
+$S_t = S_0 \exp \left( (\mu - \frac{\sigma^2}{2})t + \sigma W_t \right)$
+
+In our approach, we modify this solution by incorporating a **neural network model**. Instead of directly calculating $\( S_t \)$ based on drift and volatility, we approximate it as follows:
+
+$S_t = \exp \left( f(S_{t-1}) + \eta_t \right)$
+
+where:
+- $\( f(S_{t-1}) \)$ is a **neural network** function applied to the previous time step’s price, capturing **both linear and nonlinear interactions** in price evolution.
+- $\( \eta_t \)$ represents an **alpha-stable noise term** that introduces heavy-tailed behavior, modeling rare events more effectively than Gaussian noise.
+
+### Neural Network Structure for \( f(S_{t-1}) \)
+
+The neural network function $\( f(S_{t-1}) \)$ combines:
+1. A **nonlinear neural network** layer to capture **complex interactions and dependencies** in stock price behavior.
+2. A **linear layer** to retain **linear dynamics** typical in financial time series.
+
+This combined structure enables the model to capture both **traditional linear trends** and **nonlinear effects** present in financial data, improving its ability to model realistic price movements.
+
+### Alpha-Stable Noise and Parameter Estimation
+
+To account for rare events, we replace the standard Wiener process with an **alpha-stable noise term**, $\( \eta_t \)$, characterized by its **heavy-tailed** nature. An alpha-stable distribution has four parameters:
+- **Stability $(\( \alpha \))$** and **skewness $(\( \beta \))$**: These are approximated directly as constants, based on the nature of the data.
+- **Mean $(\( \mu_t \))$** and **scale $(\( \sigma_t \))$**: These are modeled as functions of the previous price $\( S_{t-1} \)$ using a **neural network** $\( g(S_{t-1}) \)$ such that:
+
+
+$\mu_t, \sigma_t = g(S_{t-1})$
+
+This setup allows the model to learn time-dependent adjustments to the mean and scale of the noise, adapting dynamically to market conditions.
+
+### Summary
+
+In this deep learning framework:
+1. **Price dynamics** are approximated by combining nonlinear and linear interactions in the network function $\( f(S_{t-1}) \)$.
+2. **Heavy-tailed noise** is introduced through an alpha-stable noise term $\( \eta_t \)$, allowing the model to account for rare events.
+
+This combination of deep learning and alpha-stable modeling enables a robust and flexible approach to stock market prediction, potentially improving upon traditional GBM by capturing both **common price movements** and **extreme events** in the financial markets.
+
