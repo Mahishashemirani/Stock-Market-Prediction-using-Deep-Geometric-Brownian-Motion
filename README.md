@@ -38,7 +38,7 @@ To address the limitations of the Gaussian noise term, this project proposes an 
 
 ### Why Alpha-Stable Distributions?
 
-**Alpha-stable distributions** are a family of probability distributions characterized by their **heavy tails**, allowing them to model extreme events more effectively than Gaussian distributions. An alpha-stable distribution can capture a **higher likelihood of extreme deviations**, offering a more realistic representation of stock returns.
+**[Alpha-stable distributions](https://en.wikipedia.org/wiki/Stable_distribution)** are a family of probability distributions characterized by their **heavy tails**, allowing them to model extreme events more effectively than Gaussian distributions. An alpha-stable distribution can capture a **higher likelihood of extreme deviations**, offering a more realistic representation of stock returns.
 
 By replacing the Wiener process $\( W_t \)$ with an **alpha-stable noise term**, the stock price dynamics become:
 
