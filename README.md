@@ -16,8 +16,11 @@ where:
 - $\( W_t \)$ is a **Wiener process** (or Brownian motion), responsible for introducing random fluctuations.
 
 In this model, **future price changes** are influenced by both a deterministic drift $(\( \mu \))$ and a random noise component scaled by volatility $(\( \sigma \))$, making it a powerful tool for capturing **basic price dynamics** over time.  
+
 This equation can be solved and the solutions is:  
 $S_t = S_0 \exp\(\(\mu - \frac{\sigma ^ 2}{2} \)t + \sigma W_t\)$  
+
+
 GBM is widely used in financial modeling because:
 1. It assumes **log-normal distribution** of stock prices, aligning with the historical tendency of stock prices to be positive and skewed.
 2. It captures the **random walk behavior** observed in stock prices, which often exhibit volatility and unpredictable fluctuations in the short term.
